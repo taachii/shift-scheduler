@@ -1,0 +1,324 @@
+/* --- ZMIENNE CSS --- */
+:root {
+  --color-bg:      #f4f4f9;
+  --color-card:    #ffffff;
+  --color-text:    #264653;
+  --color-muted:   #6c757d;
+  --color-primary: #2a9d8f;
+  --color-accent:  #e9c46a;
+  --color-warn:    #e76f51;
+  --color-header:  #333333;
+  --radius:        8px;
+  --transition:    0.2s ease-in-out;
+  --font-heading:  'Montserrat', sans-serif;
+  --font-body:     'Lato', sans-serif;
+}
+
+/* --- RESET / BOX-SIZING --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- PODSTAWOWE --- */
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- KONTAINER --- */
+.container {
+  width: 100%;        /* zawsze pełna szerokość do max-width */
+  max-width: 920px;   /* nie większa niż 920px */
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* --- HEADER --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+header h1 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-primary);
+}
+
+/* --- MONTH PICKER --- */
+.month-picker {
+  display: flex;
+  align-items: center;
+}
+.month-picker button {
+  background: var(--color-primary);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.month-picker button:hover {
+  background: #23867a;
+}
+.month-picker span {
+  margin: 0 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+/* --- KALENDARZ --- */
+#calendar {
+  width: 100%;        /* stała szerokość względem kontenera */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--color-bg);
+}
+
+/* ramki */
+.weekday,
+.day {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* zaokrąglenie rogów nagłówków */
+.weekday:first-child {
+  border-top-left-radius: var(--radius);
+}
+.weekday:nth-child(7) {
+  border-top-right-radius: var(--radius);
+}
+
+/* nagłówki dni tygodnia */
+.weekday {
+  background: var(--color-header);
+  color: #fff;
+  text-align: center;
+  padding: 0.75rem 0;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+}
+
+/* komórki dni */
+.day {
+  background: var(--color-card);
+  min-height: 90px;
+  padding: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* jednolity, szary odcień pustych pól – bez efektów hover */
+.day.empty {
+  background: var(--color-bg);
+  cursor: default;
+}
+.day.empty:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.day .date {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.day.shift {
+  color: #fff;
+}
+
+/* feedback wykonanej zmiany */
+.day.done {
+  opacity: 0.5;
+}
+.day.done::after {
+  content: '✓';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+/* --- LEGENDA --- */
+.legend {
+  margin: 2rem 0;
+}
+.legend h2 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+.legend ul {
+  list-style: none;
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.legend .color-box {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+/* --- FOOTER --- */
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+footer span {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+/* --- MODAL --- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: var(--color-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  position: relative;
+}
+.modal-content h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 1.25rem;
+  color: var(--color-primary);
+}
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-muted);
+  line-height: 1;
+}
+
+/* --- FORMULARZ W MODALU --- */
+#modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#modalBody label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+#modalBody .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+#modalBody .checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+#modalBody select,
+#modalBody input[type="time"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  margin-top: 0.25rem;
+}
+#modalBody #details {
+  padding: 0.5rem 0;
+  margin: 0.25rem 0;
+}
+#modalBody #customFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0.75rem 0;
+}
+
+/* --- PRZYCISK ZAPISZ --- */
+#saveBtn {
+  margin-top: 0.5rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background var(--transition);
+  width: 100%;
+}
+#saveBtn:hover {
+  background: #d4b55a;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+  .day {
+    min-height: 70px;
+    padding: 0.3rem;
+  }
+  .weekday {
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+  .month-picker span {
+    display: none;
+  }
+  .modal-content {
+    padding: 1.25rem;
+  }
+}

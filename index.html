@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kalendarz zmian</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Grafik zmian</h1>
+      <div class="month-picker">
+        <button id="prev">&lt;</button>
+        <span id="monthLabel"></span>
+        <button id="next">&gt;</button>
+      </div>
+    </header>
+
+    <div id="calendar"></div>
+
+    <aside class="legend">
+      <h2>Legenda zmian</h2>
+      <ul id="legendList"></ul>
+    </aside>
+
+    <footer>
+      <div>Razem godzin: <span id="totalHours">0</span> h</div>
+      <div>Szacowane wynagrodzenie (brutto): <span id="totalPay">0</span> zł</div>
+      <div>Procent ukończenia: <span id="percentDone">0</span>%</div>
+    </footer>
+  </div>
+
+  <!-- Modal na szczegóły zmiany -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h3>Szczegóły zmiany</h3>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

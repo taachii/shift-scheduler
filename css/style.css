@@ -1,4 +1,3 @@
-/* --- ZMIENNE CSS --- */
 :root {
   --color-bg:      #f4f4f9;
   --color-card:    #ffffff;
@@ -14,14 +13,12 @@
   --font-body:     'Lato', sans-serif;
 }
 
-/* --- RESET / BOX-SIZING --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* --- PODSTAWOWE --- */
 body {
   font-family: var(--font-body);
   background: var(--color-bg);
@@ -30,13 +27,12 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-/* --- KONTAINER --- */
 .container {
-  width: 100%;        /* zawsze pełna szerokość do max-width */
-  max-width: 920px;   /* nie większa niż 920px */
+  width: 100%;
+  max-width: 920px;
   margin: 1.5rem auto;
   padding: 1.5rem;
   background: var(--color-card);
@@ -44,7 +40,6 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* --- HEADER --- */
 header {
   display: flex;
   justify-content: space-between;
@@ -57,10 +52,10 @@ header h1 {
   color: var(--color-primary);
 }
 
-/* --- MONTH PICKER --- */
 .month-picker {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 .month-picker button {
   background: var(--color-primary);
@@ -79,33 +74,29 @@ header h1 {
 .month-picker span {
   margin: 0 1rem;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
   color: var(--color-text);
 }
 
-/* --- KALENDARZ --- */
 #calendar {
-  width: 100%;        /* stała szerokość względem kontenera */
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: var(--color-bg);
 }
 
-/* ramki */
 .weekday,
 .day {
   border: 1px solid rgba(0,0,0,0.1);
 }
-
-/* zaokrąglenie rogów nagłówków */
 .weekday:first-child {
   border-top-left-radius: var(--radius);
 }
 .weekday:nth-child(7) {
   border-top-right-radius: var(--radius);
 }
-
-/* nagłówki dni tygodnia */
 .weekday {
   background: var(--color-header);
   color: #fff;
@@ -114,8 +105,6 @@ header h1 {
   font-family: var(--font-heading);
   font-size: 0.95rem;
 }
-
-/* komórki dni */
 .day {
   background: var(--color-card);
   min-height: 90px;
@@ -129,8 +118,6 @@ header h1 {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-/* jednolity, szary odcień pustych pól – bez efektów hover */
 .day.empty {
   background: var(--color-bg);
   cursor: default;
@@ -139,7 +126,6 @@ header h1 {
   transform: none;
   box-shadow: none;
 }
-
 .day .date {
   font-family: var(--font-heading);
   font-size: 1rem;
@@ -148,8 +134,6 @@ header h1 {
 .day.shift {
   color: #fff;
 }
-
-/* feedback wykonanej zmiany */
 .day.done {
   opacity: 0.5;
 }
@@ -160,11 +144,17 @@ header h1 {
   right: 6px;
   font-size: 1.2rem;
   color: var(--color-primary);
+  filter: brightness(2);
+}
+
+.day.today {
+  border: 3px solid var(--color-warn);
 }
 
 /* --- LEGENDA --- */
 .legend {
-  margin: 2rem 0;
+  text-align: center;
+  margin: 0 auto 2rem auto;
 }
 .legend h2 {
   font-family: var(--font-heading);
@@ -172,7 +162,9 @@ header h1 {
   color: var(--color-primary);
 }
 .legend ul {
-  list-style: none;
+  display: inline-block;
+  text-align: left;
+  padding-left: 0;
 }
 .legend li {
   display: flex;
@@ -186,6 +178,28 @@ header h1 {
   margin-right: 0.5rem;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 4px;
+}
+.legend.hidden {
+  display: none !important;
+}
+
+/* ✅ Przycisk toggle legendy */
+#toggleLegendBtn {
+  display: block;
+  margin: 2rem auto 1rem auto;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition);
+  text-align: center;
+}
+#toggleLegendBtn:hover {
+  background: #23867a;
 }
 
 /* --- FOOTER --- */
@@ -307,17 +321,47 @@ footer span {
   .container {
     padding: 1rem;
   }
-  .day {
-    min-height: 70px;
-    padding: 0.3rem;
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
   }
+
+  .day {
+    min-height: 60px;
+    padding: 0.3rem;
+    font-size: 0.7rem;
+  }
+
   .weekday {
     padding: 0.5rem 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
+
   .month-picker span {
-    display: none;
+    display: inline;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
   }
+
+  .shift-label {
+    font-size: 0.6rem;
+  }
+
+  .legend li {
+    font-size: 0.85rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    align-items: flex-start;
+  }
+
   .modal-content {
     padding: 1.25rem;
   }

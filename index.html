@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Kalendarz zmian</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <div class="container">
     <header>
       <h1>Grafik zmian</h1>
@@ -21,8 +21,10 @@
 
     <div id="calendar"></div>
 
-    <aside class="legend">
-      <h2>Legenda zmian</h2>
+    <!-- ✅ Przycisk pokaż/ukryj legendę -->
+    <button id="toggleLegendBtn">Pokaż legendę zmian</button>
+
+    <aside class="legend hidden">
       <ul id="legendList"></ul>
     </aside>
 
@@ -33,7 +35,6 @@
     </footer>
   </div>
 
-  <!-- Modal na szczegóły zmiany -->
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <span id="closeModal" class="close">&times;</span>

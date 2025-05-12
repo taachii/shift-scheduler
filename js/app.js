@@ -6,7 +6,7 @@ const shifts = {
   "3*":   { start: "16:00", end: "20:00", hours: 4,  color: "#dc3545" },
   "4":    { start: "09:00", end: "21:00", hours: 12, color: "#6f42c1" },
   "4S":   { start: "09:00", end: "22:00", hours: 13, color: "#fd7e14" },
-  "5":    { start: "10:00", end: "20:00", hours: 10, color: "#20c997" },
+  "5":    { start: "10:00", end: "20:00", hours: 10, color: "#9b4ecc" },
   "4;6R": { start: "09:00", end: "15:00", hours: 6,  color: "#007bff" },
   "4;6P": { start: "15:00", end: "21:00", hours: 6,  color: "#e83e8c" }
 };

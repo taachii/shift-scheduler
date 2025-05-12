@@ -109,7 +109,7 @@ function renderCalendar() {
       if (entry.shift) {
         const s = shifts[entry.shift];
         cell.style.background = s.color;
-        cell.innerHTML += `<div class="shift-label">Zmiana ${entry.shift}</div>`;
+        cell.innerHTML += `<div class="shift-label">Zm. ${entry.shift}</div>`;
       } else if (entry.custom) {
         cell.style.background = "#6c757d";
         cell.innerHTML += `<div class="shift-label">${entry.start}–${entry.end}</div>`;
@@ -149,7 +149,7 @@ function onDayClick(dateStr) {
         ${Object.keys(shifts).map(n =>
           `<option value="${n}" ${entry.shift === n ? "selected" : ""}>${n}</option>`
         ).join("")}
-        <option value="custom" ${entry.custom ? "selected" : ""}>Custom</option>
+        <option value="custom" ${entry.custom ? "selected" : ""}>Niestandardowa</option>
       </select>
     </label>
     <div id="details"></div>

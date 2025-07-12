@@ -316,6 +316,43 @@ footer span {
   background: #d4b55a;
 }
 
+/* Stylizacja pola stawki godzinowej w footerze */
+footer > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+footer > div:last-child label {
+  font-weight: 600;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+#rateInput {
+  width: 90px;
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline-offset: 2px;
+  outline-color: transparent;
+  outline-style: solid;
+  cursor: text;
+}
+
+#rateInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+  outline-color: var(--color-primary);
+}
+
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 600px) {
   .container {
@@ -364,5 +401,15 @@ footer span {
 
   .modal-content {
     padding: 1.25rem;
+  }
+
+   footer > div:last-child {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  #rateInput {
+    width: 100%;
+    max-width: 150px;
   }
 }

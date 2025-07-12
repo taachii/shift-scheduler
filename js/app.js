@@ -14,12 +14,24 @@ const shifts = {
 // 2) Stan aplikacji
 let current = new Date();
 const STORAGE_KEY = "grafikZmian";
+const STORAGE_RATE_KEY = "grafikZmian_rate";
+
 function loadData() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
 }
 function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
+
+function loadRate() {
+  const stored = localStorage.getItem(STORAGE_RATE_KEY);
+  return stored ? parseFloat(stored) : 31;
+}
+function saveRate(rate) {
+  localStorage.setItem(STORAGE_RATE_KEY, rate.toString());
+}
+
+let rate = loadRate();
 
 // 2a) Compute hours (hh:mm → liczba godzin, uwzględnia noc)
 function computeHours(start, end) {
@@ -251,7 +263,6 @@ function updateSummary() {
     }
   }
 
-  const rate = 31;
   const percentDone = totalScheduled > 0
     ? ((totalDone / totalScheduled) * 100).toFixed(2)
     : "0.00";
@@ -281,6 +292,18 @@ document.getElementById("toggleLegendBtn").addEventListener("click", () => {
   btn.textContent = legend.classList.contains("hidden")
     ? "Pokaż legendę zmian"
     : "Ukryj legendę zmian";
+});
+
+// 9) Obsługa stawki godzinowej
+document.getElementById("rateInput").value = rate;
+
+document.getElementById("rateInput").addEventListener("input", (e) => {
+  const val = parseFloat(e.target.value);
+  if (!isNaN(val) && val >= 0) {
+    rate = val;
+    saveRate(rate);
+    updateSummary();
+  }
 });
 
 // start

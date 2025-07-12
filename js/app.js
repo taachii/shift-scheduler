@@ -256,9 +256,10 @@ function updateSummary() {
     ? ((totalDone / totalScheduled) * 100).toFixed(2)
     : "0.00";
 
-  document.getElementById("totalHours").textContent   = totalScheduled;
+  const summaryText = `Przepracowano ${totalDone} z ${totalScheduled} godzin (${percentDone}%)`;
+
+  document.getElementById("workSummary").textContent = summaryText;
   document.getElementById("totalPay").textContent     = (totalScheduled * rate).toFixed(2);
-  document.getElementById("percentDone").textContent  = percentDone;
 }
 
 // 7) Nawigacja

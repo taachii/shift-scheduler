@@ -360,6 +360,11 @@ footer > div:last-child label {
   background: #d4b55a;
 }
 
+.highlight {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 600px) {
   .container {

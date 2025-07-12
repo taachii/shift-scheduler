@@ -267,11 +267,11 @@ function updateSummary() {
     ? ((totalDone / totalScheduled) * 100).toFixed(2)
     : "0.00";
 
-  const summaryText = `Przepracowano ${totalDone} z ${totalScheduled} godzin (<span class="percentDone">${percentDone}%</span>)`;
+  const summaryText = `Przepracowano <span class="highlight">${totalDone}</span> z <span class="highlight">${totalScheduled}</span> godzin (<span class="highlight">${percentDone}%</span>)`;
 
   document.getElementById("workSummary").innerHTML = summaryText;
-  document.getElementById("earnedPay").textContent    = (totalDone * rate).toFixed(2);
-  document.getElementById("totalPay").textContent     = (totalScheduled * rate).toFixed(2);
+  document.getElementById("earnedPay").innerHTML    = `Wypłata za przepracowane godziny: <span class="highlight">${(totalDone * rate).toFixed(2)}</span> zł`;
+  document.getElementById("totalPay").innerHTML     = `Wypłata za miesiąc: <span class="highlight">${(totalScheduled * rate).toFixed(2)}</span> zł`;
 }
 
 // 7) Nawigacja

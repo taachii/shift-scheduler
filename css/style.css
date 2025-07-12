@@ -205,14 +205,58 @@ header h1 {
 /* --- FOOTER --- */
 footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  align-items: center;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0,0,0,0.1);
-  font-size: 1rem;
 }
-footer span {
+
+footer > div:not(:last-child) {
   font-family: var(--font-heading);
   color: var(--color-primary);
+  text-align: center;
+}
+
+footer > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  font-size: 1rem;
+}
+
+footer > div:last-child label {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* Input stawki godzinowej */
+#rateInput {
+  width: 90px;
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline-offset: 2px;
+  outline-color: transparent;
+  outline-style: solid;
+  cursor: text;
+}
+
+#rateInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+  outline-color: var(--color-primary);
 }
 
 /* --- MODAL --- */
@@ -316,42 +360,6 @@ footer span {
   background: #d4b55a;
 }
 
-/* Stylizacja pola stawki godzinowej w footerze */
-footer > div:last-child {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  color: var(--color-text);
-}
-
-footer > div:last-child label {
-  font-family: var(--font-heading);
-  color: var(--color-primary);
-  white-space: nowrap;
-}
-
-#rateInput {
-  width: 90px;
-  padding: 0.35rem 0.5rem;
-  font-size: 1rem;
-  border: 1.5px solid rgba(0,0,0,0.15);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  color: var(--color-text);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  outline-offset: 2px;
-  outline-color: transparent;
-  outline-style: solid;
-  cursor: text;
-}
-
-#rateInput:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 5px var(--color-primary);
-  outline-color: var(--color-primary);
-}
-
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 600px) {
   .container {
@@ -395,20 +403,21 @@ footer > div:last-child label {
     flex-direction: column;
     gap: 0.5rem;
     font-size: 0.9rem;
-    align-items: flex-start;
+    align-items: center;
+    padding-top: 1rem;
+  }
+
+  footer > div:last-child {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  #rateInput {
+    width: 100%;
+    max-width: 150px;
   }
 
   .modal-content {
     padding: 1.25rem;
-  }
-
-   footer > div:last-child {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  
-  #rateInput {
-    width: 100%;
-    max-width: 150px;
   }
 }

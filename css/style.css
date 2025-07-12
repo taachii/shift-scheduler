@@ -326,7 +326,6 @@ footer > div:last-child {
 }
 
 footer > div:last-child label {
-  font-weight: 600;
   font-family: var(--font-heading);
   color: var(--color-primary);
   white-space: nowrap;

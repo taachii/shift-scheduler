@@ -215,7 +215,6 @@ footer {
 
 footer > div:not(:last-child) {
   font-family: var(--font-heading);
-  color: var(--color-primary);
   text-align: center;
 }
 
